@@ -1,0 +1,47 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Titolo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="book.title"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="author">Autore</label>
+        <input
+          class="form-control"
+          id="author"
+          required
+          [(ngModel)]="book.author"
+          name="author"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="categories">Categoria/e (con virgola per separare. esempio: fantasy, noir)</label>
+        <input
+          class="form-control"
+          id="categories"
+          required
+          [(ngModel)]="categoriesValues"
+          name="categories"
+        />
+      </div>
+      
+      
+      <button (click)="saveBook()" class="btn btn-success">Salva</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Il libro è stato salvato con successo.</h4>
+      <button class="btn btn-secondary" (click)="newBook()">OK</button>
+    </div>
+  </div>
+</div>

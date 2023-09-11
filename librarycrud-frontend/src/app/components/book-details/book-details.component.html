@@ -1,0 +1,157 @@
+<!-->view di lato in book-list<!-->	
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentBook.id">
+	    <table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">Autore</th>
+			      <th scope="col">Disponibilità</th>
+			      <th scope="col">Categorie</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>{{ currentBook.author }}</td>
+			      <td>{{ currentBook.available ? "Disponibile" : "Non disponibile" }}</td>
+			      <td>{{ getCategoriesValues() }}</td>
+			    </tr>
+			  </tbody>
+		</table>
+
+		<a
+	      class="btn btn-warning mr-2"
+	      routerLink="/books/{{ currentBook.id }}"
+	    >Modifica
+	    </a>
+  </div>
+
+  <div *ngIf="!currentBook">
+    <br />
+    <p>Please click on a Book...</p>
+  </div>
+</div>
+  
+    
+<!-->view se clicchi<!-->
+<ng-template #editable>
+  <div *ngIf="currentBook.id" class="edit-form">
+    <!--><h4>Book</h4><!-->
+    <form>
+      <div class="form-group">
+        <label for="title">Titolo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentBook.title"
+          name="title"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="author">Autore</label>
+        <input
+          type="text"
+          class="form-control"
+          id="author"
+          [(ngModel)]="currentBook.author"
+          name="author"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="author">Cateoria/e (con virgola per separare. esempio: fantasy, noir)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="categories"
+          [(ngModel)]="categoriesValues"
+          name="categories"
+        />
+      </div>
+
+	
+	<div class="form-check mb-3">
+	  	<input 
+	  		class="form-check-input" 
+	  		type="checkbox" 
+	  		[checked]="currentBook.available" 
+	  		id="flexCheckChecked" 
+	  		(click)="updateAvailable(!currentBook.available)"
+		>
+		<label class="form-check-label" for="flexCheckChecked">
+		{{ currentBook.available ? "Disponibile" : "Non disponibile" }}
+		</label>
+	  		
+	</div>
+	
+		<!-->
+		
+		
+	  <div class="form-group">
+	    <label><strong>Disponibilità:</strong></label>
+	    {{ currentBook.availability ? "Unavailable" : "Available" }}
+	  </div>
+      <!-->
+      
+    <!-->Bottone diposnibilità<!-->
+      
+    </form>
+    
+    <!-->deve stare dentro form o fuori?
+	<button
+      class="btn btn-outline-danger mb-3"
+      *ngIf="currentBook.available"
+      (click)="updateAvailable(false)"
+    >
+      Disponibile
+    </button>
+    <button
+      *ngIf="!currentBook.available"
+      class="btn btn-outline-secondary mb-3"
+      (click)="updateAvailable(true)"
+    >
+      Non disponibile
+    </button>
+	<!-->
+	
+	
+	<button
+      type="submit"
+      class="btn btn-warning mr-2"
+      (click)="updateBook()"
+    >
+      Aggiorna
+    </button>
+	
+	
+
+
+    <button class="btn btn-outline-danger mr-2" (click)="deleteBook()">
+      Elimina
+    </button>
+
+    
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentBook.id">
+    <br />
+    <p>Cannot access this Book...</p>
+  </div>
+</ng-template>
+
+<!-->
+    <div>
+      <label><strong>Title:</strong></label> {{ currentBook.title }}
+    </div>
+    <div>
+      <label><strong>Author:</strong></label>
+      {{ currentBook.author }}
+    </div>
+    <div>
+      <label><strong>Stock:</strong></label>
+      {{ currentBook.borrowed ? "Unavailable" : "Available" }}
+    </div>
+	
+	<!-->
