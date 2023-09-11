@@ -1,9 +1,6 @@
 # LibraryCRUD-Angular-Spring-MySql
 A simple Library Application using CRUD operations with 3-tier architecture (frontend, backend and relational database). 
 
-
-
-
 ## Stack:
 ```
 Angular 16 
