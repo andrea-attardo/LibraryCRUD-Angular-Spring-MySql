@@ -9,7 +9,7 @@ MySql
 ```
 
 ## Overview Frontend:
-1) Each Book has id, title, description, published status.
+1) Each Book has id, title, category, availability.
 2) We can create, retrieve, update, delete Books.
 3) There is a Search bar for finding Books by title.
 
