@@ -38,16 +38,29 @@ GET         /api/books?title=[keyword]	find all Books which title contains keywo
 
 
 ## Overview Backend:
-Built a Rest CRUD API using Spring Boot, Spring Data JPA, Hibernate, Maven to interact with MySQL.
-<img src="https://github.com/andrea-attardo/LibraryCRUD-Angular-Spring-MySql/blob/main/project_structure.png?raw=true" width="500" >
+A Rest CRUD API using Spring Boot, Spring Data JPA, Hibernate, Maven to interact with MySQL.
+
+<img src="https://github.com/andrea-attardo/LibraryCRUD-Angular-Spring-MySql/blob/main/project_structure.png?raw=true" width="250" >
+
+
++ Book and Category data model class corresponds to entity and table on database.
++ Category field in Book entity is not a proper key but a ManyToMany relantionship with Category entity with unique constrain (category's name).
++ BookRepository and CategoryRepository is an interface that extends JpaRepository for CRUD methods and custom finder methods. 
++ BookController and CategoryController is a RestController which has request mapping methods for RESTful requests such as: findAll, findById, createTutorial, save, update, delete.
++ Configuration for Spring Datasource, JPA & Hibernate in application.properties.
++ pom.xml contains dependencies for Spring Boot and MySQL.
+
+#### Run backend:
+
+1) From terminal run: ```mvn spring-boot:run ```
 
 ## Setup a local Database:
+
+1) Install MySql locally: https://dev.mysql.com/downloads/installer/
+
+2) Under src/main/resources folder, open application.properties and modified these lines with your local values.
 ```
-install on local
-
-Under src/main/resources folder, open application.properties and write these lines.
-
-spring.datasource.url= jdbc:mysql://localhost:3306/testdb?useSSL=false
+spring.datasource.url= jdbc:mysql://localhost:3306/librarydb?useSSL=false
 spring.datasource.username= root
 spring.datasource.password= 123456
 
@@ -60,3 +73,6 @@ spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQLDialect
 # Hibernate ddl auto (create, create-drop, validate, update)
 spring.jpa.hibernate.ddl-auto= update
 ```
+3) Run MySQl database locally before run backend.
+   
+
