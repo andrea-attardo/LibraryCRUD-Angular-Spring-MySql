@@ -1,0 +1,7 @@
+com\andreanesos\librarydatamanager\repository\CategoryRepository.class
+com\andreanesos\librarydatamanager\model\Book.class
+com\andreanesos\librarydatamanager\repository\BookRepository.class
+com\andreanesos\librarydatamanager\controller\BookController.class
+com\andreanesos\librarydatamanager\controller\CategoryController.class
+com\andreanesos\librarydatamanager\LibraryDataManagerApplication.class
+com\andreanesos\librarydatamanager\model\Category.class
