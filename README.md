@@ -46,7 +46,7 @@ A Rest CRUD API using Spring Boot, Spring Data JPA, Hibernate, Maven to interact
 + Book and Category data model class corresponds to entity and table on database.
 + Category field in Book entity is not a proper key but a ManyToMany relantionship with Category entity with unique constrain (category's name).
 + BookRepository and CategoryRepository is an interface that extends JpaRepository for CRUD methods and custom finder methods. 
-+ BookController and CategoryController is a RestController which has request mapping methods for RESTful requests such as: findAll, findById, createTutorial, save, update, delete.
++ BookController and CategoryController is a RestController which has request mapping methods for RESTful requests such as: findAll, findById, create, save, update, delete.
 + Configuration for Spring Datasource, JPA & Hibernate in application.properties.
 + pom.xml contains dependencies for Spring Boot and MySQL.
 
